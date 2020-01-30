@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc86c4cc-9f0e-47ba-b31a-68e921aea7d9" name="Default Changelist" comment="" />
+    <list default="true" id="cc86c4cc-9f0e-47ba-b31a-68e921aea7d9" name="Default Changelist" comment="updated CalculatePrice function&#10;added tests for CalculatePrice">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/MovieTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/MovieTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/domain/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/domain/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/Movie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/MovieScreening.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/MovieTicket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/Order$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/TicketExportFormat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/domain/OrderTest.class" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,37 +26,54 @@
     <session id="208474052">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="8" />
-          <entry key="xml" value="1" />
+          <entry key="gitignore" value="1" />
+          <entry key="java" value="14" />
+          <entry key="json" value="10" />
+          <entry key="md" value="1" />
+          <entry key="txt" value="5" />
+          <entry key="xml" value="3" />
+          <entry key="yml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="8" />
-          <entry key="XML" value="1" />
+          <entry key="JAVA" value="14" />
+          <entry key="JSON" value="10" />
+          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="XML" value="3" />
+          <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1609" />
-          <entry key="xml" value="3" />
+          <entry key="java" value="3329" />
+          <entry key="json" value="1" />
+          <entry key="md" value="72" />
+          <entry key="txt" value="192" />
+          <entry key="xml" value="19" />
+          <entry key="yml" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1609" />
-          <entry key="XML" value="3" />
+          <entry key="JAVA" value="3329" />
+          <entry key="JSON" value="1" />
+          <entry key="PLAIN_TEXT" value="264" />
+          <entry key="XML" value="19" />
+          <entry key="YAML" value="46" />
         </counts>
       </usages-collector>
     </session>
@@ -51,15 +81,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/domain/Movie.java">
+        <entry file="file://$PROJECT_DIR$/src/test/domain/OrderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+            <state relative-caret-position="488">
+              <caret line="312" column="69" selection-start-line="312" selection-start-column="69" selection-end-line="312" selection-end-column="69" />
               <folding>
-                <element signature="e#304#305#0" expanded="true" />
-                <element signature="e#332#333#0" expanded="true" />
-                <element signature="e#394#395#0" expanded="true" />
-                <element signature="e#435#436#0" expanded="true" />
+                <element signature="method#calculatePrice#0;class#OrderTest#0" />
               </folding>
             </state>
           </provider>
@@ -75,15 +102,28 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Matthijswilhelmus &lt;matthijswilhelmus@live.nl&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/domain/MovieScreening.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/MovieTicket.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/TicketExportFormat.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/Order.java" />
+        <option value="$PROJECT_DIR$/.github/workflows/maven.yml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/Order_1.json" />
+        <option value="$PROJECT_DIR$/src/main/java/domain/Movie.java" />
+        <option value="$PROJECT_DIR$/src/main/java/domain/MovieTicket.java" />
+        <option value="$PROJECT_DIR$/src/main/java/domain/Order.java" />
         <option value="$PROJECT_DIR$/src/test/domain/OrderTest.java" />
       </list>
     </option>
@@ -100,15 +140,19 @@
           <item name="cinema-price-calculator" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="cinema-price-calculator" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
       </expand>
       <select />
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="805" />
-    <option name="y" value="-10" />
-    <option name="width" value="1300" />
-    <option name="height" value="1409" />
+    <option name="x" value="1272" />
+    <option name="width" value="1297" />
+    <option name="height" value="1398" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -116,8 +160,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -147,6 +189,14 @@
               <item name="cinemapricecalculator" type="b2602c69:ProjectViewProjectNode" />
               <item name="cinemapricecalculator" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinemapricecalculator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinemapricecalculator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -160,10 +210,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580219784369" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580424920679" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -176,6 +228,116 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/azure-pipelines.yml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -190,19 +352,6 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.OrderTest">
-    <configuration name="Order" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="domain.Order" />
-      <module name="cinema-price-calculator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cinema-price-calculator" />
       <extension name="coverage">
@@ -217,14 +366,84 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinema-price-calculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain" />
+      <option name="MAIN_CLASS_NAME" value="domain.OrderTest" />
+      <option name="METHOD_NAME" value="calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWithLessThan6Tickets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinema-price-calculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain" />
+      <option name="MAIN_CLASS_NAME" value="domain.OrderTest" />
+      <option name="METHOD_NAME" value="calculatePriceNotStudentOrderAndPremiumTicketInWeekendWithLessThan6Tickets" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTest.calculatePriceNotStudentOrderNoPremiumTicketInWeekendWith6orMoreTickets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinema-price-calculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain" />
+      <option name="MAIN_CLASS_NAME" value="domain.OrderTest" />
+      <option name="METHOD_NAME" value="calculatePriceNotStudentOrderNoPremiumTicketInWeekendWith6orMoreTickets" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderTest.calculatePriceNotStudentOrderNoPremiumTicketInWeekendWithLessThan6Tickets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinema-price-calculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain" />
+      <option name="MAIN_CLASS_NAME" value="domain.OrderTest" />
+      <option name="METHOD_NAME" value="calculatePriceNotStudentOrderNoPremiumTicketInWeekendWithLessThan6Tickets" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.Order" />
+      <item itemvalue="JUnit.OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets" />
+      <item itemvalue="JUnit.OrderTest.calculatePriceNotStudentOrderNoPremiumTicketInWeekendWith6orMoreTickets" />
+      <item itemvalue="JUnit.OrderTest.calculatePriceNotStudentOrderNoPremiumTicketInWeekendWithLessThan6Tickets" />
+      <item itemvalue="JUnit.OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWithLessThan6Tickets" />
       <item itemvalue="JUnit.OrderTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.OrderTest" />
-        <item itemvalue="Application.Order" />
+        <item itemvalue="JUnit.OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWithLessThan6Tickets" />
+        <item itemvalue="JUnit.OrderTest.calculatePriceNotStudentOrderNoPremiumTicketInWeekendWithLessThan6Tickets" />
+        <item itemvalue="JUnit.OrderTest.calculatePriceNotStudentOrderNoPremiumTicketInWeekendWith6orMoreTickets" />
+        <item itemvalue="JUnit.OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets" />
       </list>
     </recent_temporary>
   </component>
@@ -239,21 +458,73 @@
       <option name="presentableId" value="Default" />
       <updated>1579805315121</updated>
     </task>
+    <task id="LOCAL-00001" summary="updated README">
+      <created>1580232331570</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580232331570</updated>
+    </task>
+    <task id="LOCAL-00002" summary="updated maven yaml&#10;added .gitignore">
+      <created>1580233068540</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580233068540</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added version to pom.xml &#10;changed .gitignore">
+      <created>1580233565378</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580233565378</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added badge to README">
+      <created>1580236274121</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1580236274121</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="OrderTest - 2020.01.28 at 14h 49m 44s.xml">
-      <configuration name="OrderTest" configurationId="JUnit" />
+    <history-entry file="OrderTest_calculatePriceWithStudentOrderAndPremiumTicket - 2020.01.30 at 22h 08m 49s.xml">
+      <configuration name="OrderTest.calculatePriceWithStudentOrderAndPremiumTicket" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="OrderTest - 2020.01.28 at 14h 56m 27s.xml">
+    <history-entry file="OrderTest_calculatePriceNotStudentOrderAndPremiumTicketOnWeekdays - 2020.01.30 at 22h 10m 06s.xml">
+      <configuration name="OrderTest.calculatePriceNotStudentOrderAndPremiumTicketOnWeekdays" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderTest_calculatePriceNotStudentOrderNoPremiumTicketOnWeekdays - 2020.01.30 at 22h 12m 48s.xml">
+      <configuration name="OrderTest.calculatePriceNotStudentOrderNoPremiumTicketOnWeekdays" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderTest_calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets - 2020.01.30 at 22h 18m 07s.xml">
+      <configuration name="OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderTest_calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets - 2020.01.30 at 22h 18m 20s.xml">
+      <configuration name="OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderTest_calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets - 2020.01.30 at 22h 18m 30s.xml">
+      <configuration name="OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWith6orMoreTickets" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderTest_calculatePriceNotStudentOrderNoPremiumTicketInWeekendWith6orMoreTickets - 2020.01.30 at 22h 20m 07s.xml">
+      <configuration name="OrderTest.calculatePriceNotStudentOrderNoPremiumTicketInWeekendWith6orMoreTickets" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderTest_calculatePriceNotStudentOrderNoPremiumTicketInWeekendWithLessThan6Tickets - 2020.01.30 at 22h 21m 10s.xml">
+      <configuration name="OrderTest.calculatePriceNotStudentOrderNoPremiumTicketInWeekendWithLessThan6Tickets" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderTest_calculatePriceNotStudentOrderAndPremiumTicketInWeekendWithLessThan6Tickets - 2020.01.30 at 22h 21m 51s.xml">
+      <configuration name="OrderTest.calculatePriceNotStudentOrderAndPremiumTicketInWeekendWithLessThan6Tickets" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderTest - 2020.01.30 at 23h 46m 13s.xml">
       <configuration name="OrderTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13236763" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22877122" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -262,14 +533,42 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.20543806" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.11782477" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32930514" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32930514" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.56843156" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10489511" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.14803626" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32930514" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -278,8 +577,8 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" weight="0.56850713" />
-    </layout>
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.56843156" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -288,53 +587,16 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+    <MESSAGE value="updated README" />
+    <MESSAGE value="updated maven yaml&#10;added .gitignore" />
+    <MESSAGE value="added version to pom.xml &#10;changed .gitignore" />
+    <MESSAGE value="added badge to README" />
+    <MESSAGE value="updated CalculatePrice function&#10;added tests for CalculatePrice" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated CalculatePrice function&#10;added tests for CalculatePrice" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/domain/OrderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="58" column="45" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
-          <folding>
-            <element signature="e#391#392#0" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="801">
-          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#export#0;class#Order#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/MovieTicket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/TicketExportFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/MovieScreening.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -346,15 +608,101 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.github/workflows/maven.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/azure-pipelines.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="98" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="160">
+            <caret line="8" column="98" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/TicketExportFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="785">
+          <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/Movie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        <state relative-caret-position="120">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
           <folding>
             <element signature="e#304#305#0" expanded="true" />
             <element signature="e#332#333#0" expanded="true" />
             <element signature="e#394#395#0" expanded="true" />
             <element signature="e#435#436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Order_1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Order_1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/MovieTicket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="59" column="25" lean-forward="true" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/domain/OrderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="312" column="69" selection-start-line="312" selection-start-column="69" selection-end-line="312" selection-end-column="69" />
+          <folding>
+            <element signature="method#calculatePrice#0;class#OrderTest#0" />
           </folding>
         </state>
       </provider>
