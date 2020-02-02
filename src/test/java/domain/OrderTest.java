@@ -27,6 +27,7 @@ class OrderTest {
     }
 
     //Default ~~ template
+    /*
     @Test
     void calculatePrice() {
 
@@ -59,6 +60,7 @@ class OrderTest {
 
         assertEquals(order1.getOrderNr(), 1);
     }
+    */
 
     @Test
     void calculatePriceWithStudentOrderNoPremiumTicket() {
@@ -89,9 +91,11 @@ class OrderTest {
         order1.addSeatReservation(ticket2);
         order1.addSeatReservation(ticket3);
         order1.addSeatReservation(ticket4);
+        double price = order1.calculatePrice();
 
         //----- ASSERT ----
-        assertEquals(order1.calculatePrice(), 20.00);
+        //every second ticket is free
+        assertEquals( 20.00, price);
     }
 
     @Test
@@ -108,7 +112,7 @@ class OrderTest {
 
         //Movie tickets
         MovieTicket ticket1 = new MovieTicket(screening1, true, 1, 1);
-        MovieTicket ticket2 = new MovieTicket(screening1, true, 1, 2);
+        MovieTicket ticket2 = new MovieTicket(screening1, false, 1, 2);
 
         //Adding stuff
         movie1.addScreening(screening1);
@@ -119,9 +123,11 @@ class OrderTest {
         //----- ACT ----
         order1.addSeatReservation(ticket1);
         order1.addSeatReservation(ticket2);
+        double price = order1.calculatePrice();
 
         //----- ASSERT ----
-        assertEquals(order1.calculatePrice(), 12.00);
+        //every second ticket is free and premium adds 2 to price of ticket
+        assertEquals( 12.00, price);
     }
 
     @Test
@@ -139,6 +145,7 @@ class OrderTest {
         //Movie tickets
         MovieTicket ticket1 = new MovieTicket(screening1, true, 1, 1);
         MovieTicket ticket2 = new MovieTicket(screening1, true, 1, 2);
+        MovieTicket ticket3 = new MovieTicket(screening1, false, 1, 3);
         //Adding stuff
         movie1.addScreening(screening1);
 
@@ -148,9 +155,12 @@ class OrderTest {
         //----- ACT ----
         order1.addSeatReservation(ticket1);
         order1.addSeatReservation(ticket2);
+        order1.addSeatReservation(ticket3);
+        double price = order1.calculatePrice();
 
         //----- ASSERT ----
-        assertEquals(order1.calculatePrice(), 13.00);
+        //every second ticket is free and premium adds 3 to price of ticket
+        assertEquals( 23.00, price);
     }
 
     @Test
@@ -177,9 +187,11 @@ class OrderTest {
         //----- ACT ----
         order1.addSeatReservation(ticket1);
         order1.addSeatReservation(ticket2);
+        double price = order1.calculatePrice();
 
         //----- ASSERT ----
-        assertEquals(order1.calculatePrice(), 10.00);
+        //every second ticket is free
+        assertEquals( 10.00, price);
     }
 
     @Test
@@ -192,15 +204,15 @@ class OrderTest {
         Movie movie1 = new Movie("Joker");
 
         //Screenings
-        MovieScreening screening1 = new MovieScreening(movie1, date, 07.00);
+        MovieScreening screening1 = new MovieScreening(movie1, date, 10.00);
 
         //Movie tickets
         MovieTicket ticket1 = new MovieTicket(screening1, true, 1, 1);
         MovieTicket ticket2 = new MovieTicket(screening1, true, 1, 2);
         MovieTicket ticket3 = new MovieTicket(screening1, true, 1, 3);
-        MovieTicket ticket4 = new MovieTicket(screening1, true, 1, 4);
-        MovieTicket ticket5 = new MovieTicket(screening1, true, 1, 5);
-        MovieTicket ticket6 = new MovieTicket(screening1, true, 1, 6);
+        MovieTicket ticket4 = new MovieTicket(screening1, false, 1, 4);
+        MovieTicket ticket5 = new MovieTicket(screening1, false, 1, 5);
+        MovieTicket ticket6 = new MovieTicket(screening1, false, 1, 6);
 
         //Adding stuff
         movie1.addScreening(screening1);
@@ -215,9 +227,14 @@ class OrderTest {
         order1.addSeatReservation(ticket4);
         order1.addSeatReservation(ticket5);
         order1.addSeatReservation(ticket6);
+        double price = order1.calculatePrice();
 
         //----- ASSERT ----
-        assertEquals(order1.calculatePrice(), 54.00);
+        // 6 or more tickets gives 10% discount over each ticket => (ticketprice(+ premium)) * 0,90
+        // 3 tickets of (10+3premium fee - 10% discount) = 35,1
+        // 3 tickets of (10 - 10% discount) = 27
+        // total: 62,1
+        assertEquals(62.1, price);
     }
 
     @Test
@@ -255,9 +272,10 @@ class OrderTest {
         order1.addSeatReservation(ticket5);
         order1.addSeatReservation(ticket6);
         order1.addSeatReservation(ticket7);
+        double price = order1.calculatePrice();
 
         //----- ASSERT ----
-        assertEquals(order1.calculatePrice(), 63.00);
+        assertEquals( 63.00, price);
     }
 
     @Test
@@ -291,9 +309,11 @@ class OrderTest {
         order1.addSeatReservation(ticket3);
         order1.addSeatReservation(ticket4);
         order1.addSeatReservation(ticket5);
+        double price = order1.calculatePrice();
 
         //----- ASSERT ----
-        assertEquals(order1.calculatePrice(), 50.00);
+        //full price per ticket
+        assertEquals( 50.00, price);
     }
 
     @Test
@@ -310,9 +330,9 @@ class OrderTest {
 
         //Movie tickets
         MovieTicket ticket1 = new MovieTicket(screening1, true, 1, 1);
-        MovieTicket ticket2 = new MovieTicket(screening1, true, 1, 2);
+        MovieTicket ticket2 = new MovieTicket(screening1, false, 1, 2);
         MovieTicket ticket3 = new MovieTicket(screening1, true, 1, 3);
-        MovieTicket ticket4 = new MovieTicket(screening1, true, 1, 4);
+        MovieTicket ticket4 = new MovieTicket(screening1, false, 1, 4);
 
         //Adding stuff
         movie1.addScreening(screening1);
@@ -325,9 +345,11 @@ class OrderTest {
         order1.addSeatReservation(ticket2);
         order1.addSeatReservation(ticket3);
         order1.addSeatReservation(ticket4);
+        double price = order1.calculatePrice();
 
         //----- ASSERT ----
-        assertEquals(order1.calculatePrice(), 52.00);
+        // full price per ticket with two ticket plus 3 premium fee
+        assertEquals( 46.00, price);
     }
     /*
     //Default ~~ template

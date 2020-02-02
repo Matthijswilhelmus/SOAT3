@@ -69,18 +69,15 @@ public class Order
             }
             return price;
         } else if (!this.isStudentOrder && screenShowingDay == DayOfWeek.SATURDAY | screenShowingDay == DayOfWeek.SUNDAY | screenShowingDay == DayOfWeek.FRIDAY) {
-            for (int i = 0; i < tickets.size(); i++) {
-                if(sixormoreTickets & tickets.get(i).isPremiumTicket()){
-                    price = price + ((tickets.get(i).getPrice() + 03.00) * 0.90);
-                }
-                else if (sixormoreTickets & !tickets.get(i).isPremiumTicket()) {
-                    price = price + (tickets.get(i).getPrice() * 0.90);
-                }
-                else if (!sixormoreTickets & !tickets.get(i).isPremiumTicket()) {
-                    price = price + (tickets.get(i).getPrice());
-                }
-                else if (!sixormoreTickets & tickets.get(i).isPremiumTicket()){
-                    price = price + (tickets.get(i).getPrice() + 03.00);
+            for (MovieTicket ticket : tickets) {
+                if (sixormoreTickets & ticket.isPremiumTicket()) {
+                    price = price + ((ticket.getPrice() + 03.00) * 0.90);
+                } else if (sixormoreTickets & !ticket.isPremiumTicket()) {
+                    price = price + (ticket.getPrice() * 0.90);
+                } else if (!sixormoreTickets & !ticket.isPremiumTicket()) {
+                    price = price + (ticket.getPrice());
+                } else{
+                    price = price + (ticket.getPrice() + 03.00);
                 }
             }
             return price;
