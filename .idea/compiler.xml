@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="cinema-price-calculator" />
         <module name="cinemapricecalculator" />
+        <module name="SOAT3" />
       </profile>
     </annotationProcessing>
   </component>
