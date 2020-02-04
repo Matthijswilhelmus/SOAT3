@@ -1,18 +1,12 @@
 package domain;
 
-import com.google.gson.annotations.Expose;
-
 import java.time.DayOfWeek;
 
 public class MovieTicket
 {
-    @Expose(deserialize = false)
     private MovieScreening movieScreening;
-    @Expose
     private boolean isPremiumTicket;
-    @Expose
     private int seatRow;
-    @Expose
     private int seatNr;
 
     public MovieTicket(

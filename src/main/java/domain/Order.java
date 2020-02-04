@@ -1,8 +1,7 @@
 package domain;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -41,9 +40,51 @@ public class Order
         tickets.add(ticket);
     }
 
+    //-------------------------------------------------------
+    public double calculatePrice() {
+        double totalPrice = 0;
+        if (tickets.size() > 0) {
+            DayOfWeek dayOfWeek = tickets.get(0).getDayOfWeek();
+            boolean isWeekDay = checkIsWeekday(dayOfWeek);
+            if (isStudentOrder || isWeekDay) {
+                for (int i = 0; i < tickets.size(); i++) {
+                    if (i % 2 == 0) {
+                        totalPrice += calculateTicketPrice(tickets.get(i));
+                    }
+                }
+            } else {
+                for (MovieTicket ticket : tickets) {
+                    totalPrice += calculateTicketPrice(ticket);
+                }
+                if (tickets.size() >= 6) {
+                    totalPrice = totalPrice * 0.9;
+                }
+            }
+        }
+        return totalPrice;
+    }
+
+    public double calculateTicketPrice(MovieTicket ticket) {
+        double ticketPrice = ticket.getPrice();
+        if (ticket.isPremiumTicket()) {
+            ticketPrice += 3;
+            if (isStudentOrder) {
+                ticketPrice -= 1;
+            }
+        }
+        return ticketPrice;
+    }
+
+    public boolean checkIsWeekday(DayOfWeek dayOfWeek) {
+        return dayOfWeek.getValue() >= DayOfWeek.MONDAY.getValue() && dayOfWeek.getValue() <= DayOfWeek.THURSDAY.getValue();
+    }
+    //-------------------------------------------------------
+    /*
     public double calculatePrice()
     {
         double price = 00.00;
+        double studentPremium = 02.00;
+        double premium = 03.00;
         //Below: assumption that an order is placed for 1 film screening, so you only have to check one ticket from the order
         DayOfWeek screenShowingDay = tickets.get(0).getDayOfWeek();
         boolean sixormoreTickets = (tickets.size() >= 6);
@@ -51,7 +92,7 @@ public class Order
         if (this.isStudentOrder()) {
             for (int i = 0; i < tickets.size(); i = i + 2) {
                 if(tickets.get(i).isPremiumTicket()){
-                    price = price + (tickets.get(i).getPrice() + 02.00);
+                    price = price + (tickets.get(i).getPrice() + studentPremium);
                 }
                 else{
                     price = price + tickets.get(i).getPrice();
@@ -61,7 +102,7 @@ public class Order
         } else if (!this.isStudentOrder && screenShowingDay != DayOfWeek.SATURDAY & screenShowingDay != DayOfWeek.SUNDAY & screenShowingDay != DayOfWeek.FRIDAY) {
             for (int i = 0; i < tickets.size(); i = i + 2) {
                 if(tickets.get(i).isPremiumTicket()){
-                    price = price + (tickets.get(i).getPrice() + 03.00);
+                    price = price + (tickets.get(i).getPrice() + premium);
                 }
                 else{
                     price = price + tickets.get(i).getPrice();
@@ -71,19 +112,20 @@ public class Order
         } else if (!this.isStudentOrder && screenShowingDay == DayOfWeek.SATURDAY | screenShowingDay == DayOfWeek.SUNDAY | screenShowingDay == DayOfWeek.FRIDAY) {
             for (MovieTicket ticket : tickets) {
                 if (sixormoreTickets & ticket.isPremiumTicket()) {
-                    price = price + ((ticket.getPrice() + 03.00) * 0.90);
+                    price = price + ((ticket.getPrice() + premium) * 0.90);
                 } else if (sixormoreTickets & !ticket.isPremiumTicket()) {
                     price = price + (ticket.getPrice() * 0.90);
                 } else if (!sixormoreTickets & !ticket.isPremiumTicket()) {
                     price = price + (ticket.getPrice());
                 } else{
-                    price = price + (ticket.getPrice() + 03.00);
+                    price = price + (ticket.getPrice() + premium);
                 }
             }
             return price;
         }
         return price;
     }
+     */
         /*
         //check if the order has tickets..?
         •	Elk 2e ticket is gratis voor studenten (elke dag van de week) of als het een voorstelling betreft op een doordeweekse dag (ma/di/wo/do) voor iedereen.
@@ -112,12 +154,24 @@ public class Order
             }
             break;
         case JSON:
-            //Does not work yet (circular references in the serialized data)
-            Gson gsonx = new GsonBuilder()
-                    .excludeFieldsWithoutExposeAnnotation()
-                    .create();
             try {
-                gsonx.toJson(tickets, new FileWriter("Order_"+this.orderNr+".json"));
+                FileWriter fileWriter = new FileWriter("Order_"+this.orderNr+".json");
+                JSONObject jsonObject = new JSONObject();
+                JSONArray jsonArray = new JSONArray();
+                for (int i = 0; i < tickets.size() ; i++) {
+                    JSONObject jsonTicket = new JSONObject();
+                    jsonTicket.append("Ticket", tickets.get(i).toString());
+                    if (i % 2 == 0) {
+                        jsonTicket.append("Price", calculateTicketPrice(tickets.get(i)));
+                    } else {
+                        jsonTicket.append("Price", "0 (Second ticket free) (" + calculateTicketPrice(tickets.get(i)) + ")");
+                    }
+                    jsonArray.put(jsonTicket);
+                }
+                jsonObject.put("Tickets", jsonArray);
+                jsonObject.put("Total price", String.format("%.2f", calculatePrice()));
+                fileWriter.write(jsonObject.toString());
+                fileWriter.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
