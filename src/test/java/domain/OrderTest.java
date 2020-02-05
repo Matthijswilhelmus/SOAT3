@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrderTest {
 
@@ -27,6 +27,7 @@ class OrderTest {
     }
 
     //Default ~~ template
+    /*
     @Test
     void calculatePriceWithNoTickets() {
 
@@ -39,7 +40,7 @@ class OrderTest {
         //----- ASSERT ----
         assertEquals( 0.00, price);
     }
-
+    */
     @Test
     void calculatePriceWithStudentOrderNoPremiumTicket() {
         //----- ARRANGE ----

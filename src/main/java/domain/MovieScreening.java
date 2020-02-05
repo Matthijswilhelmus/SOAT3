@@ -22,7 +22,6 @@ public class MovieScreening
         return pricePerSeat;
     }
 
-    //get ScreenDate
     public LocalDateTime getDateAndTime()
     {
         return dateAndTime;
