@@ -27,7 +27,6 @@ class OrderTest {
     }
 
     //Default ~~ template
-    /*
     @Test
     void calculatePriceWithNoTickets() {
 
@@ -40,7 +39,7 @@ class OrderTest {
         //----- ASSERT ----
         assertEquals( 0.00, price);
     }
-    */
+
     @Test
     void calculatePriceWithStudentOrderNoPremiumTicket() {
         //----- ARRANGE ----

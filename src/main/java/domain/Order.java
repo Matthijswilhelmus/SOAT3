@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Order {
+public class Order extends OrderAbstract {
     private static final Logger LOGGER = Logger.getLogger(Order.class.getName());
     private int orderNr;
     private boolean isStudentOrder;
+    PriceStrategy priceStrategy;
 
     private ArrayList<MovieTicket> tickets;
 
@@ -19,6 +20,7 @@ public class Order {
         this.isStudentOrder = isStudentOrder;
 
         tickets = new ArrayList<MovieTicket>();
+        priceStrategy = new NormalPriceStrategy();
     }
 
     public int getOrderNr() {
@@ -33,52 +35,9 @@ public class Order {
         tickets.add(ticket);
     }
 
-    public double calculatePrice() {
-        double price = 00.00;
-        double studentPremium = 02.00;
-        double premium = 03.00;
-        //Below: assumption that an order is placed for 1 film screening, so you only have to check one ticket from the order
-        DayOfWeek screenShowingDay = tickets.get(0).getDayOfWeek();
-        boolean sixormoreTickets = (tickets.size() >= 6);
-
-        if (this.isStudentOrder()) {
-            for (int i = 0; i < tickets.size(); i = i + 2) {
-                if (tickets.get(i).isPremiumTicket()) {
-                    price = price + (tickets.get(i).getPrice() + studentPremium);
-                } else {
-                    price = price + tickets.get(i).getPrice();
-                }
-            }
-            return price;
-        } else if (!this.isStudentOrder && screenShowingDay != DayOfWeek.SATURDAY & screenShowingDay != DayOfWeek.SUNDAY & screenShowingDay != DayOfWeek.FRIDAY) {
-            for (int i = 0; i < tickets.size(); i = i + 2) {
-                if (tickets.get(i).isPremiumTicket()) {
-                    price = price + (tickets.get(i).getPrice() + premium);
-                } else {
-                    price = price + tickets.get(i).getPrice();
-                }
-            }
-            return price;
-        } else if (!this.isStudentOrder && screenShowingDay == DayOfWeek.SATURDAY | screenShowingDay == DayOfWeek.SUNDAY | screenShowingDay == DayOfWeek.FRIDAY) {
-            for (MovieTicket ticket : tickets) {
-                if (sixormoreTickets & ticket.isPremiumTicket()) {
-                    price = price + ((ticket.getPrice() + premium) * 0.90);
-                } else if (sixormoreTickets & !ticket.isPremiumTicket()) {
-                    price = price + (ticket.getPrice() * 0.90);
-                } else if (!sixormoreTickets & !ticket.isPremiumTicket()) {
-                    price = price + (ticket.getPrice());
-                } else {
-                    price = price + (ticket.getPrice() + premium);
-                }
-            }
-            return price;
-        }
-        return price;
-    }
-
     //-------------------------------------------------------
-    /*
     public double calculatePrice() {
+        //return priceStrategy.CalculatePrice();
         double totalPrice = 0;
         if (!tickets.isEmpty()) {
             DayOfWeek dayOfWeek = tickets.get(0).getDayOfWeek();
@@ -115,7 +74,6 @@ public class Order {
     public boolean checkIsWeekday(DayOfWeek dayOfWeek) {
         return dayOfWeek.getValue() >= DayOfWeek.MONDAY.getValue() && dayOfWeek.getValue() <= DayOfWeek.THURSDAY.getValue();
     }
-     */
 
     public void export(TicketExportFormat exportFormat) {
         FileWriter fileWriter = null;
