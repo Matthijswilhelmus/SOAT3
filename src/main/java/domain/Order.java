@@ -8,9 +8,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Order
 {
+    private static final Logger LOGGER = Logger.getLogger( Order.class.getName() );
     private int orderNr;
     private boolean isStudentOrder;
 
@@ -101,7 +104,7 @@ public class Order
         try {
             if (!file.exists()) {
                 boolean isCreated = file.createNewFile();
-                System.out.println(isCreated);
+                LOGGER.log( Level.INFO,  "" + isCreated);
             }
             fileWriter = new FileWriter(file);
 
@@ -134,13 +137,13 @@ public class Order
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log( Level.SEVERE, e.toString(), e );
         } finally {
             if (fileWriter != null) {
                 try {
                     fileWriter.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOGGER.log( Level.SEVERE, e.toString(), e );
                 }
             }
         }
