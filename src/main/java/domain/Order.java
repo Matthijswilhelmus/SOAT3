@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.DayOfWeek;
-import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
 
 public class Order
@@ -98,7 +96,7 @@ public class Order
 
         File file = new File(finalFileName + extensionName);
 
-        FileWriter fileWriter;
+        FileWriter fileWriter = null;
 
         try {
             if (!file.exists()) {
@@ -134,9 +132,17 @@ public class Order
                 }
                 fileWriter.write(String.format("Total price: %.2f", calculatePrice()));
             }
-            fileWriter.close();
+            
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (fileWriter != null) {
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

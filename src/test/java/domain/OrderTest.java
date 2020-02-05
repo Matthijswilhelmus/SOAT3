@@ -330,12 +330,6 @@ class OrderTest {
         assertEquals( 46.00, price);
     }
 
-    //Default ~~ template
-    @Test
-    void export() {
-        assertEquals(1,1);
-    }
-
     @Test
     void exportAsPlaintext() {
         //----- ARRANGE ----
