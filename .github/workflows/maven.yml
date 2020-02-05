@@ -17,3 +17,5 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: unittests with Maven
       run: mvn test
+    - name: SonarCloud analysis
+      run: mvn verify sonar:sonar
