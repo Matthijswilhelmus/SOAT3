@@ -397,6 +397,6 @@ class OrderTest {
         order1.export(TicketExportFormat.JSON);
 
         //----- ASSERT ----
-
+        
     }
 }

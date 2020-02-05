@@ -31,7 +31,6 @@ public class MovieTicket
         return movieScreening.getPricePerSeat();
     }
 
-    //get ScreenDate
     public DayOfWeek getDayOfWeek()
     {
         return movieScreening.getDateAndTime().getDayOfWeek();

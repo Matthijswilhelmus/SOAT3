@@ -83,9 +83,6 @@ public class Order
 
     public void export(TicketExportFormat exportFormat)
     {
-        // Bases on the string representations of the tickets (toString), write
-        // the ticket to a file with naming convention Order_<orderNr>.txt or
-        // Order_<orderNr>.json
         String extensionName = "";
         if (exportFormat.name().equals(TicketExportFormat.JSON.toString())) {
             extensionName = ".json";
