@@ -3,6 +3,7 @@ package domain;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.DayOfWeek;
@@ -84,21 +85,29 @@ public class Order
         // Bases on the string representations of the tickets (toString), write
         // the ticket to a file with naming convention Order_<orderNr>.txt or
         // Order_<orderNr>.json
-        switch (exportFormat) {
-        case PLAINTEXT:
-            try {
-                FileWriter writer = new FileWriter("Order_"+this.orderNr+".txt", true);
-                writer.write(tickets.toString());
-                writer.write("\r\n");   // write new line
-                writer.write("The total price: " + this.calculatePrice());
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+        String extensionName = "";
+        if (exportFormat.name().equals(TicketExportFormat.JSON.toString())) {
+            extensionName = ".json";
+        }
+        if (exportFormat.name().equals(TicketExportFormat.PLAINTEXT.toString())) {
+            extensionName = ".txt";
+        }
+        String baseFileName = "Order_";
+        String orderNumber = String.valueOf(orderNr);
+        String finalFileName = baseFileName.concat(orderNumber);
+
+        File file = new File(finalFileName + extensionName);
+
+        FileWriter fileWriter;
+
+        try {
+            if (!file.exists()) {
+                boolean isCreated = file.createNewFile();
+                System.out.println(isCreated);
             }
-            break;
-        case JSON:
-            try {
-                FileWriter fileWriter = new FileWriter("Order_"+this.orderNr+".json");
+            fileWriter = new FileWriter(file);
+
+            if (exportFormat.name().equals(TicketExportFormat.JSON.toString())) {
                 JSONObject jsonObject = new JSONObject();
                 JSONArray jsonArray = new JSONArray();
                 for (int i = 0; i < tickets.size() ; i++) {
@@ -114,11 +123,20 @@ public class Order
                 jsonObject.put("Tickets", jsonArray);
                 jsonObject.put("Total price", String.format("%.2f", calculatePrice()));
                 fileWriter.write(jsonObject.toString());
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-            break;
+            if (exportFormat.name().equals(TicketExportFormat.PLAINTEXT.toString())) {
+                for (int i = 0; i < tickets.size(); i++) {
+                    if (i % 2 == 0) {
+                        fileWriter.write(tickets.get(i).toString() + " : " + calculateTicketPrice(tickets.get(i)) + "\n");
+                    } else {
+                        fileWriter.write(tickets.get(i).toString() + " : 0 (" + calculateTicketPrice(tickets.get(i)) + ")" + "\n");
+                    }
+                }
+                fileWriter.write(String.format("Total price: %.2f", calculatePrice()));
+            }
+            fileWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
