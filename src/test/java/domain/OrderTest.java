@@ -27,40 +27,18 @@ class OrderTest {
     }
 
     //Default ~~ template
-    /*
     @Test
-    void calculatePrice() {
+    void calculatePriceWithNoTickets() {
 
         //----- ARRANGE ----
-        //Date variables
-        LocalDateTime date =  LocalDateTime.of(2020, Month.JANUARY, 28, 12, 50);
-
-        //Movies
-        Movie movie1 = new Movie("Joker");
-        Movie movie2 = new Movie("1917");
-
-        //Screenings
-        MovieScreening screening1 = new MovieScreening(movie1, date, 10.00);
-        MovieScreening screening2 = new MovieScreening(movie2, date, 10.00);
-
-        //Movie tickets
-        MovieTicket ticket1 = new MovieTicket(screening1, true, 1, 1);
-
-        //Adding stuff
-        movie1.addScreening(screening1);
-        movie2.addScreening(screening2);
-
-        //Order
         Order order1 = new Order(1, true);
 
-
         //----- ACT ----
-        order1.addSeatReservation(ticket1);
-        //----- ASSERT ----
+        double price = order1.calculatePrice();
 
-        assertEquals(order1.getOrderNr(), 1);
+        //----- ASSERT ----
+        assertEquals( 0.00, price);
     }
-    */
 
     @Test
     void calculatePriceWithStudentOrderNoPremiumTicket() {
@@ -351,7 +329,7 @@ class OrderTest {
         // full price per ticket with two ticket plus 3 premium fee
         assertEquals( 46.00, price);
     }
-    /*
+
     //Default ~~ template
     @Test
     void export() {
@@ -359,9 +337,72 @@ class OrderTest {
     }
 
     @Test
-    void exportAsPlaintext() {}
+    void exportAsPlaintext() {
+        //----- ARRANGE ----
+        //Date variables
+        LocalDateTime date =  LocalDateTime.of(2020, Month.FEBRUARY, 2, 12, 50);
+
+        //Movies
+        Movie movie1 = new Movie("Dark Waters");
+
+        //Screenings
+        MovieScreening screening1 = new MovieScreening(movie1, date, 10.00);
+
+        //Movie tickets
+        MovieTicket ticket1 = new MovieTicket(screening1, true, 1, 1);
+        MovieTicket ticket2 = new MovieTicket(screening1, false, 1, 2);
+        MovieTicket ticket3 = new MovieTicket(screening1, true, 1, 3);
+        MovieTicket ticket4 = new MovieTicket(screening1, false, 1, 4);
+
+        //Adding stuff
+        movie1.addScreening(screening1);
+
+        //Order
+        Order order1 = new Order(1, false);
+
+        //----- ACT ----
+        order1.addSeatReservation(ticket1);
+        order1.addSeatReservation(ticket2);
+        order1.addSeatReservation(ticket3);
+        order1.addSeatReservation(ticket4);
+        order1.export(TicketExportFormat.PLAINTEXT);
+
+        //----- ASSERT ----
+
+    }
 
     @Test
-    void exportAsJSON() {}
-    */
+    void exportAsJSON() {
+        //----- ARRANGE ----
+        //Date variables
+        LocalDateTime date =  LocalDateTime.of(2020, Month.FEBRUARY, 2, 12, 50);
+
+        //Movies
+        Movie movie1 = new Movie("Dark Waters");
+
+        //Screenings
+        MovieScreening screening1 = new MovieScreening(movie1, date, 10.00);
+
+        //Movie tickets
+        MovieTicket ticket1 = new MovieTicket(screening1, true, 1, 1);
+        MovieTicket ticket2 = new MovieTicket(screening1, false, 1, 2);
+        MovieTicket ticket3 = new MovieTicket(screening1, true, 1, 3);
+        MovieTicket ticket4 = new MovieTicket(screening1, false, 1, 4);
+
+        //Adding stuff
+        movie1.addScreening(screening1);
+
+        //Order
+        Order order1 = new Order(1, false);
+
+        //----- ACT ----
+        order1.addSeatReservation(ticket1);
+        order1.addSeatReservation(ticket2);
+        order1.addSeatReservation(ticket3);
+        order1.addSeatReservation(ticket4);
+        order1.export(TicketExportFormat.JSON);
+
+        //----- ASSERT ----
+
+    }
 }
