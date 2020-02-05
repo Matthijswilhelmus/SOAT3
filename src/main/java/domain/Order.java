@@ -45,10 +45,10 @@ public class Order
     //-------------------------------------------------------
     public double calculatePrice() {
         double totalPrice = 0;
-        if (tickets.size() > 0) {
+        if (!tickets.isEmpty()) {
             DayOfWeek dayOfWeek = tickets.get(0).getDayOfWeek();
             boolean isWeekDay = checkIsWeekday(dayOfWeek);
-            if (isStudentOrder || isWeekDay) {
+            if (isStudentOrder | isWeekDay) {
                 for (int i = 0; i < tickets.size(); i++) {
                     if (i % 2 == 0) {
                         totalPrice += calculateTicketPrice(tickets.get(i));
@@ -78,71 +78,34 @@ public class Order
     }
 
     public boolean checkIsWeekday(DayOfWeek dayOfWeek) {
-        return dayOfWeek.getValue() >= DayOfWeek.MONDAY.getValue() && dayOfWeek.getValue() <= DayOfWeek.THURSDAY.getValue();
+        return dayOfWeek.getValue() >= DayOfWeek.MONDAY.getValue() & dayOfWeek.getValue() <= DayOfWeek.THURSDAY.getValue();
     }
 
-    public void export(TicketExportFormat exportFormat)
-    {
-        String extensionName = "";
-        if (exportFormat.name().equals(TicketExportFormat.JSON.toString())) {
-            extensionName = ".json";
-        }
-        if (exportFormat.name().equals(TicketExportFormat.PLAINTEXT.toString())) {
-            extensionName = ".txt";
-        }
-        String baseFileName = "Order_";
-        String orderNumber = String.valueOf(orderNr);
-        String finalFileName = baseFileName.concat(orderNumber);
-
-        File file = new File(finalFileName + extensionName);
-
+    public void export(TicketExportFormat exportFormat) {
         FileWriter fileWriter = null;
-
-        try {
-            if (!file.exists()) {
-                boolean isCreated = file.createNewFile();
-                LOGGER.log( Level.INFO,  "" + isCreated);
-            }
-            fileWriter = new FileWriter(file);
-
-            if (exportFormat.name().equals(TicketExportFormat.JSON.toString())) {
-                JSONObject jsonObject = new JSONObject();
-                JSONArray jsonArray = new JSONArray();
-                for (int i = 0; i < tickets.size() ; i++) {
-                    JSONObject jsonTicket = new JSONObject();
-                    jsonTicket.append("Ticket", tickets.get(i).toString());
-                    if (i % 2 == 0) {
-                        jsonTicket.append("Price", calculateTicketPrice(tickets.get(i)));
-                    } else {
-                        jsonTicket.append("Price", "0 (Second ticket free) (" + calculateTicketPrice(tickets.get(i)) + ")");
-                    }
-                    jsonArray.put(jsonTicket);
-                }
-                jsonObject.put("Tickets", jsonArray);
-                jsonObject.put("Total price", String.format("%.2f", calculatePrice()));
-                fileWriter.write(jsonObject.toString());
-            }
-            if (exportFormat.name().equals(TicketExportFormat.PLAINTEXT.toString())) {
-                for (int i = 0; i < tickets.size(); i++) {
-                    if (i % 2 == 0) {
-                        fileWriter.write(tickets.get(i).toString() + " : " + calculateTicketPrice(tickets.get(i)) + "\n");
-                    } else {
-                        fileWriter.write(tickets.get(i).toString() + " : 0 (" + calculateTicketPrice(tickets.get(i)) + ")" + "\n");
-                    }
-                }
-                fileWriter.write(String.format("Total price: %.2f", calculatePrice()));
-            }
-            
-        } catch (Exception e) {
-            LOGGER.log( Level.SEVERE, e.toString(), e );
-        } finally {
-            if (fileWriter != null) {
+        switch (exportFormat) {
+            case PLAINTEXT:
                 try {
+                    fileWriter = new FileWriter("Order_" + this.orderNr + ".txt", true);
+                    fileWriter.write(tickets.toString());
+                    fileWriter.write("\r\n");   // write new line
+                    fileWriter.write("...");
                     fileWriter.close();
-                } catch (IOException e) {
-                    LOGGER.log( Level.SEVERE, e.toString(), e );
+                } catch (Exception e) {
+                    LOGGER.log(Level.SEVERE, e.toString(), e);
+                } finally {
+                    if (fileWriter != null) {
+                        try {
+                            fileWriter.close();
+                        } catch (IOException e) {
+                            LOGGER.log(Level.SEVERE, e.toString(), e);
+                        }
+                    }
                 }
-            }
+                break;
+            case JSON:
+                //jsonify....
+                break;
         }
     }
 
