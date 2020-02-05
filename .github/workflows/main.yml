@@ -15,9 +15,10 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: unittests with Maven
-      run: mvn test
     - name: SonarCloud analysis
       run: mvn verify sonar:sonar
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: unittests with Maven
+      run: mvn test
+
