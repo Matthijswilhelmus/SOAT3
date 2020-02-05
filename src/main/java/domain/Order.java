@@ -78,63 +78,6 @@ public class Order
     public boolean checkIsWeekday(DayOfWeek dayOfWeek) {
         return dayOfWeek.getValue() >= DayOfWeek.MONDAY.getValue() && dayOfWeek.getValue() <= DayOfWeek.THURSDAY.getValue();
     }
-    //-------------------------------------------------------
-    /*
-    public double calculatePrice()
-    {
-        double price = 00.00;
-        double studentPremium = 02.00;
-        double premium = 03.00;
-        //Below: assumption that an order is placed for 1 film screening, so you only have to check one ticket from the order
-        DayOfWeek screenShowingDay = tickets.get(0).getDayOfWeek();
-        boolean sixormoreTickets = (tickets.size() >= 6);
-
-        if (this.isStudentOrder()) {
-            for (int i = 0; i < tickets.size(); i = i + 2) {
-                if(tickets.get(i).isPremiumTicket()){
-                    price = price + (tickets.get(i).getPrice() + studentPremium);
-                }
-                else{
-                    price = price + tickets.get(i).getPrice();
-                }
-            }
-            return price;
-        } else if (!this.isStudentOrder && screenShowingDay != DayOfWeek.SATURDAY & screenShowingDay != DayOfWeek.SUNDAY & screenShowingDay != DayOfWeek.FRIDAY) {
-            for (int i = 0; i < tickets.size(); i = i + 2) {
-                if(tickets.get(i).isPremiumTicket()){
-                    price = price + (tickets.get(i).getPrice() + premium);
-                }
-                else{
-                    price = price + tickets.get(i).getPrice();
-                }
-            }
-            return price;
-        } else if (!this.isStudentOrder && screenShowingDay == DayOfWeek.SATURDAY | screenShowingDay == DayOfWeek.SUNDAY | screenShowingDay == DayOfWeek.FRIDAY) {
-            for (MovieTicket ticket : tickets) {
-                if (sixormoreTickets & ticket.isPremiumTicket()) {
-                    price = price + ((ticket.getPrice() + premium) * 0.90);
-                } else if (sixormoreTickets & !ticket.isPremiumTicket()) {
-                    price = price + (ticket.getPrice() * 0.90);
-                } else if (!sixormoreTickets & !ticket.isPremiumTicket()) {
-                    price = price + (ticket.getPrice());
-                } else{
-                    price = price + (ticket.getPrice() + premium);
-                }
-            }
-            return price;
-        }
-        return price;
-    }
-     */
-        /*
-        //check if the order has tickets..?
-        •	Elk 2e ticket is gratis voor studenten (elke dag van de week) of als het een voorstelling betreft op een doordeweekse dag (ma/di/wo/do) voor iedereen.
-        •	In het weekend betaal je als niet-student de volle prijs, tenzij de bestelling uit 6 kaartjes of meer bestaat, dan krijg je 10% groepskorting.
-        •	Een premium ticket is voor studenten 2,- duurder dan de standaardprijs per stoel van de voorstelling, voor niet-studenten 3,-.
-            Deze worden in de kortingen verrekend (dus bij een 2e ticket dat gratis is, ook geen extra kosten; bij 10% korting ook 10% van de extra kosten).
-        •	Om de casus niet nog complexer te maken, gaan we ervan uit dat bij een studenten-order alle tickets voor studenten zijn; vandaar het isStudentOrder attribuut in de Order klasse en niet in MovieTicket.
-            (is wel een leuke uitdaging om deze eis er wél in op te nemen).
-        */
 
     public void export(TicketExportFormat exportFormat)
     {
