@@ -3,7 +3,7 @@ package domain;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
-public class NormalPriceStrategy implements PriceStrategy {
+public class NormalPriceStrategy extends PriceStrategy {
 
     @Override
     public double calculatePrice(ArrayList<MovieTicket> tickets, boolean isStudentOrder) {
@@ -38,9 +38,5 @@ public class NormalPriceStrategy implements PriceStrategy {
             }
         }
         return ticketPrice;
-    }
-
-    public boolean checkIsWeekday(DayOfWeek dayOfWeek) {
-        return dayOfWeek.getValue() >= DayOfWeek.MONDAY.getValue() && dayOfWeek.getValue() <= DayOfWeek.THURSDAY.getValue();
     }
 }

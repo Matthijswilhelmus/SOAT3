@@ -3,11 +3,13 @@ package domain;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
-public interface PriceStrategy {
-    double calculatePrice(ArrayList<MovieTicket> tickets, boolean isStudentOrder);
+public abstract class PriceStrategy {
+    abstract double calculatePrice(ArrayList<MovieTicket> tickets, boolean isStudentOrder);
 
-    double calculateTicketPrice(MovieTicket ticket, boolean isStudentOrder);
+    abstract double calculateTicketPrice(MovieTicket ticket, boolean isStudentOrder);
 
-    boolean checkIsWeekday(DayOfWeek dayOfWeek);
+    public boolean checkIsWeekday(DayOfWeek dayOfWeek) {
+        return dayOfWeek.getValue() >= DayOfWeek.MONDAY.getValue() && dayOfWeek.getValue() <= DayOfWeek.THURSDAY.getValue();
+    }
 
 }
