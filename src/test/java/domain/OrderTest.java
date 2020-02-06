@@ -148,6 +148,7 @@ class OrderTest {
         order1.addSeatReservation(ticket1);
         order1.addSeatReservation(ticket2);
         order1.addSeatReservation(ticket3);
+        order1.setPriceStrategy(new AlternativePriceStrategy());
         double price = order1.calculatePrice();
 
         //----- ASSERT ----

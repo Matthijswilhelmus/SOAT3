@@ -6,7 +6,26 @@ import java.util.ArrayList;
 public class AlternativePriceStrategy implements PriceStrategy {
     @Override
     public double calculatePrice(ArrayList<MovieTicket> tickets, boolean isStudentOrder) {
-        return 0;
+        double totalPrice = 0;
+        if (!tickets.isEmpty()) {
+            DayOfWeek dayOfWeek = tickets.get(0).getDayOfWeek();
+            boolean isWeekDay = checkIsWeekday(dayOfWeek);
+            if (isStudentOrder || isWeekDay) {
+                for (int i = 0; i < tickets.size(); i++) {
+                    if (i % 2 == 0) {
+                        totalPrice += calculateTicketPrice(tickets.get(i), isStudentOrder);
+                    }
+                }
+            } else {
+                for (MovieTicket ticket : tickets) {
+                    totalPrice += calculateTicketPrice(ticket, false);
+                }
+                if (tickets.size() >= 6) {
+                    totalPrice = totalPrice * 0.9;
+                }
+            }
+        }
+        return totalPrice;
     }
 
     public double calculateTicketPrice(MovieTicket ticket, boolean isStudentOrder) {
