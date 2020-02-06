@@ -28,20 +28,6 @@ class OrderTest {
 
     //Default ~~ template
     @Test
-    void calculatePriceWithAlternativeStrategy() {
-        //----- ARRANGE ----
-        Order order1 = new Order(1, true);
-        order1.setPriceStrategy(new AlternativePriceStrategy());
-
-        //----- ACT ----
-        double price = order1.calculatePrice();
-
-        //----- ASSERT ----
-        assertEquals(0.00, price);
-    }
-
-    //Default ~~ template
-    @Test
     void calculatePriceWithNoTickets() {
 
         //----- ARRANGE ----
@@ -148,7 +134,6 @@ class OrderTest {
         order1.addSeatReservation(ticket1);
         order1.addSeatReservation(ticket2);
         order1.addSeatReservation(ticket3);
-        order1.setPriceStrategy(new AlternativePriceStrategy());
         double price = order1.calculatePrice();
 
         //----- ASSERT ----
