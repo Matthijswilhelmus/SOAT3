@@ -28,6 +28,20 @@ class OrderTest {
 
     //Default ~~ template
     @Test
+    void calculatePriceWithAlternativeStrategy() {
+        //----- ARRANGE ----
+        Order order1 = new Order(1, true);
+        order1.setPriceStrategy(new AlternativePriceStrategy());
+
+        //----- ACT ----
+        double price = order1.calculatePrice();
+
+        //----- ASSERT ----
+        assertEquals(0.00, price);
+    }
+
+    //Default ~~ template
+    @Test
     void calculatePriceWithNoTickets() {
 
         //----- ARRANGE ----
