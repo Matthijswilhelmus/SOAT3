@@ -26,6 +26,33 @@ class OrderTest {
     void tearDown() {
     }
 
+    @Test
+    void changeStates() {
+        //----- ARRANGE ----
+        Order order1 = new Order(1, true);
+        Order order2 = new Order(2, true);
+
+        //----- ACT ----
+        String currentOrderState = order1.getStateName();
+        order1.submit();
+        String currentOrderState2 = order1.getStateName();
+        order1.edit();
+        String currentOrderState3 = order1.getStateName();
+        order1.pay();
+        String currentOrderState4 = order1.getStateName();
+
+        order2.cancel();
+        String currentOrderState5 = order2.getStateName();
+        //....
+
+        //----- ASSERT ----
+        assertEquals("CreatedOrder", currentOrderState);
+        assertEquals("ReservedOrder", currentOrderState2);
+        assertEquals("ReservedOrder", currentOrderState3);
+        assertEquals("ProcessedOrder", currentOrderState4);
+        assertEquals("CancelledOrder", currentOrderState5);
+    }
+
     //Default ~~ template
     @Test
     void calculatePriceWithNoTickets() {

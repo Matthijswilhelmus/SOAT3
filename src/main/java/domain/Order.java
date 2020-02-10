@@ -1,23 +1,28 @@
 package domain;
 
+import Factory.ExportStrategyFactory;
+import Factory.PriceStrategyFactory;
+import State.CreatedOrder;
+import State.OrderState;
+
 import java.util.ArrayList;
 
 public class Order {
     private int orderNr;
     private boolean isStudentOrder;
-    PriceStrategy priceStrategy;
-    ExportStrategy exportStrategy;
-
-
     private ArrayList<MovieTicket> tickets;
+    private OrderState orderState;
+    private ExportStrategyFactory exportFactory;
+    private PriceStrategyFactory priceFactory;
 
     public Order(int orderNr, boolean isStudentOrder) {
         this.orderNr = orderNr;
         this.isStudentOrder = isStudentOrder;
-
+        exportFactory = new ExportStrategyFactory();
+        priceFactory = new PriceStrategyFactory();
+        //factory?...
         tickets = new ArrayList<MovieTicket>();
-        priceStrategy = new NormalPriceStrategy();
-        exportStrategy = new TxtExportStrategy();
+        orderState = new CreatedOrder();
     }
 
     public int getOrderNr() {
@@ -28,34 +33,43 @@ public class Order {
         return isStudentOrder;
     }
 
-    public void setPriceStrategy(PriceStrategy p) {
-        priceStrategy = p;
+    public String getStateName() {
+        return orderState.getStateName();
     }
 
-    public void setExportStrategy(ExportStrategy exp) {
-        exportStrategy = exp;
+    public void pay() {
+        this.orderState = orderState.pay();
     }
+
+    public void submit() {
+        this.orderState = orderState.submit();
+    }
+
+    public void cancel() {
+        this.orderState = orderState.cancel();
+    }
+
+    public void edit() {
+        this.orderState = orderState.edit();
+    }
+
 
     public void addSeatReservation(MovieTicket ticket) {
         tickets.add(ticket);
     }
 
     public double calculatePrice() {
-        return priceStrategy.calculatePrice(tickets, this.isStudentOrder);
+        //return priceStrategy.calculatePrice(tickets, this.isStudentOrder);
+        PriceStrategy priceStrategy = priceFactory.createPriceStrategy(this.isStudentOrder);
+        return priceStrategy.calculatePrice(tickets);
     }
 
     public void export(TicketExportFormat exportFormat) {
-        if (exportFormat == TicketExportFormat.JSON) {
-            this.setExportStrategy(new JsonExportStrategy());
-            exportStrategy.export(tickets, this.orderNr);
-        } else if (exportFormat == TicketExportFormat.PLAINTEXT) {
-            this.setExportStrategy(new TxtExportStrategy());
-            exportStrategy.export(tickets, this.orderNr);
-        }
+        //could use factory pattern
+        ExportStrategy exportStrategy = exportFactory.createExportStrategy(exportFormat);
+        exportStrategy.export(tickets, this.orderNr);
     }
 
     public static void main(String[] args) {
-        // do stuff here...
-
     }
 }
