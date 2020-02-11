@@ -7,10 +7,14 @@ import State.OrderState;
 
 import java.util.ArrayList;
 
-public class Order {
+//import Observer.Observable;
+//import Observer.Observer;
+
+public class Order /*implements Observable*/ {
     private int orderNr;
     private boolean isStudentOrder;
     private ArrayList<MovieTicket> tickets;
+    //private ArrayList<Observer> observers;
     private OrderState orderState;
     private ExportStrategyFactory exportFactory;
     private PriceStrategyFactory priceFactory;
@@ -23,6 +27,7 @@ public class Order {
         //factory?...
         tickets = new ArrayList<MovieTicket>();
         orderState = new CreatedOrder();
+        //observers = new ArrayList<Observer>();
     }
 
     public int getOrderNr() {
@@ -70,6 +75,31 @@ public class Order {
         exportStrategy.export(tickets, this.orderNr);
     }
 
+    /*
+    @Override
+    public void subscribeObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void unsubscribeObserver(Observer observer) {
+        int i = observers.indexOf(observer);
+        if (i >= 0) {
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = observers.get(i);
+            //observer.update(temperature, humidity, pressure);
+        }
+    }
+    */
+
     public static void main(String[] args) {
     }
+
+
 }
