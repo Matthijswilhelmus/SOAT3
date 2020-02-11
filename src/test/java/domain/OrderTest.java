@@ -34,11 +34,15 @@ class OrderTest {
 
         //----- ACT ----
         String currentOrderState = order1.getStateName();
+        order1.pay();
+        order1.edit();
         order1.submit();
         String currentOrderState2 = order1.getStateName();
         order1.edit();
         String currentOrderState3 = order1.getStateName();
+        order1.submit();
         order1.pay();
+        order1.cancel();
         String currentOrderState4 = order1.getStateName();
 
         order2.cancel();
