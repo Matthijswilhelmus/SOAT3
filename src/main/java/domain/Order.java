@@ -2,19 +2,19 @@ package domain;
 
 import Factory.ExportStrategyFactory;
 import Factory.PriceStrategyFactory;
+import Observer.Observable;
+import Observer.Observer;
 import State.CreatedOrder;
 import State.OrderState;
 
 import java.util.ArrayList;
 
-//import Observer.Observable;
-//import Observer.Observer;
 
-public class Order /*implements Observable*/ {
+public class Order implements Observable {
     private int orderNr;
     private boolean isStudentOrder;
     private ArrayList<MovieTicket> tickets;
-    //private ArrayList<Observer> observers;
+    private ArrayList<Observer> observers;
     private OrderState orderState;
     private ExportStrategyFactory exportFactory;
     private PriceStrategyFactory priceFactory;
@@ -27,7 +27,7 @@ public class Order /*implements Observable*/ {
         //factory?...
         tickets = new ArrayList<MovieTicket>();
         orderState = new CreatedOrder();
-        //observers = new ArrayList<Observer>();
+        observers = new ArrayList<Observer>();
     }
 
     public int getOrderNr() {
@@ -75,7 +75,6 @@ public class Order /*implements Observable*/ {
         exportStrategy.export(tickets, this.orderNr);
     }
 
-    /*
     @Override
     public void subscribeObserver(Observer observer) {
         observers.add(observer);
@@ -93,10 +92,9 @@ public class Order /*implements Observable*/ {
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = observers.get(i);
-            //observer.update(temperature, humidity, pressure);
+            observer.update();
         }
     }
-    */
 
     public static void main(String[] args) {
     }
